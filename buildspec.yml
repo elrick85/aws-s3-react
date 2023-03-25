@@ -10,8 +10,6 @@ phases:
 
   pre_build:
     commands:
-      - export FRONTEND_ROOT=${CODEBUILD_SRC_DIR}/PathToYourFrontEndRoot
-      - cd ${FRONTEND_ROOT}branchOrRef: '*', // * Covers all branches, tags, commit IDs, etc...
       - echo Installing dependencies...
       - npm install
   build:
