@@ -19,6 +19,10 @@ phases:
     commands:
       - echo Build completed deploying to hosting bucket...
 
+artifacts:
+  files:
+    - build/*
+
 batch:
   fast-fail: true
   build-list:
