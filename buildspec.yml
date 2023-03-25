@@ -21,7 +21,8 @@ phases:
 
 artifacts:
   files:
-    - build/*
+    - '**/*'
+  base-directory: build
 
 batch:
   fast-fail: true
