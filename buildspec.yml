@@ -1,0 +1,30 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 16
+    commands:
+      - npm install -g create-react-app
+      - npm --version
+
+  pre_build:
+    commands:
+      - export FRONTEND_ROOT=${CODEBUILD_SRC_DIR}/PathToYourFrontEndRoot
+      - cd ${FRONTEND_ROOT}branchOrRef: '*', // * Covers all branches, tags, commit IDs, etc...
+      - echo Installing dependencies...
+      - npm install
+  build:
+    commands:
+      - npm run build
+  post_build:
+    commands:
+      - echo Build completed deploying to hosting bucket...
+
+batch:
+  fast-fail: true
+  build-list:
+    - identifier: linux_small
+      env:
+        compute-type: BUILD_GENERAL1_SMALL
+      ignore-failure: false
